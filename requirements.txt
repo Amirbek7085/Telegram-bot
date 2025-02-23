@@ -1,4 +1,1 @@
-pip freeze > requirements.txt
-git add requirements.txt
-git commit -m "Qo‘shimcha: requirements.txt"
-git push origin main
+pyTelegramBotAPI
