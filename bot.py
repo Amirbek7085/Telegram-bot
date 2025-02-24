@@ -104,6 +104,13 @@ def admin_panel(message):
     keyboard.row("⚙️ Sozlamalar", "🔙 Orqaga")
 
     bot.send_message(message.chat.id, "🛠 <b>Admin paneliga xush kelibsiz!</b>", reply_markup=keyboard)
+# **Filmlarni boshqarish**
+@bot.message_handler(func=lambda message: message.text == "🔑 Kodlarni sozlash")
+def manage_movies(message):
+    if message.chat.id != ADMIN_ID:
+        return
+    keyboard = telebot.types.InlineKeyboardMarkup()
+    keyboard.add(telebot.types.InlineKeyboardButton("🎬 Kod orqali film topish", callback_data="check_movie_code"))
 
 # **Filmlarni boshqarish**
 @bot.message_handler(func=lambda message: message.text == "🎬 Filmlarni boshqarish")
