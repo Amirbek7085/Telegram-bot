@@ -139,13 +139,13 @@ def save_movie(admin_id, movie_name, message):
         "name": movie_name,
         "file_id": message.video.file_id if message.content_type == "video" else message.text,
         "views": 0,
-        "code": f"{movie_id}"
+        "code": f"Kino{movie_id}"
     }
     save_data(MOVIES_FILE, movies)
     keyboard = telebot.types.InlineKeyboardMarkup()
 keyboard.add(telebot.types.InlineKeyboardButton("🎬 Kod orqali film topish", callback_data="check_movie_code"))
 
-    bot.send_message(admin_id, f"✅ Kino saqlandi!\n🎬 <b>{movie_name}</b>\n🔑 Kod: Kino-{movies[movie_id]['code']}")
+    bot.send_message(admin_id, f"✅ Kino saqlandi!\n🎬 <b>{movie_name}</b>\n🔑 Kod:{movies[movie_id]['code']}")
 
 @bot.message_handler(func=lambda message: message.text == "📂 Film ro'yxati")
 def list_movies(message):
