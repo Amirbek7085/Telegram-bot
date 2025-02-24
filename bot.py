@@ -4,7 +4,7 @@ import os
 
 # **TOKEN va ADMIN ID**
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Getting token from environment variable
-ADMIN_ID = [1330483263, 8104720367 ] # <<< BU YERGA ADMIN ID-INGIZNI YOZING
+ADMIN_ID = [1330483263, 8104720367]# <<< BU YERGA ADMIN ID-INGIZNI YOZING
 
 bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
 
@@ -139,9 +139,11 @@ def save_movie(admin_id, movie_name, message):
         "name": movie_name,
         "file_id": message.video.file_id if message.content_type == "video" else message.text,
         "views": 0,
-        "code": f"KINO-{movie_id}"
+        "code": f"{movie_id}"
     }
     save_data(MOVIES_FILE, movies)
+    keyboard = telebot.types.InlineKeyboardMarkup()
+keyboard.add(telebot.types.InlineKeyboardButton("🎬 Kod orqali film topish", callback_data="check_movie_code"))
 
     bot.send_message(admin_id, f"✅ Kino saqlandi!\n🎬 <b>{movie_name}</b>\n🔑 Kod: {movies[movie_id]['code']}")
 
