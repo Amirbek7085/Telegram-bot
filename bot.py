@@ -4,7 +4,7 @@ import os
 
 # **TOKEN va ADMIN ID**
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Getting token from environment variable
-ADMIN_ID = [1330483263, 8104720367]# <<< BU YERGA ADMIN ID-INGIZNI YOZING
+ADMIN_ID = 1330483263  # <<< BU YERGA ADMIN ID-INGIZNI YOZING
 
 bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
 
