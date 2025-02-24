@@ -338,8 +338,21 @@ def verify_movie_code(message):
         bot.send_message(message.chat.id, text)
     else:
         bot.send_video(message.chat.id, movie['file_id'], caption=f"🎬 <b>{movie['name']}</b>")
+        
 
 # **BOTNI ISHLATISH**
 if __name__ == '__main__':
     print("🤖 Bot ishlamoqda...")
     bot.infinity_polling(timeout=60, long_polling_timeout=60)
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)
